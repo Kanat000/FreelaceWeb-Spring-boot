@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div th:fragment="Order(listOrders, user_id, cartHash)">
+    <th:block th:each="order : ${listOrders}">
+        <a th:href="@{${'/order/get?order_id='+order.id}}">
+        <div class="OrderBlock">
+            <div class="mainInfo">
+                <div class="blockStarters">
+                    <div class="title">[[${order.title}]]</div>
+                    <div class="published">
+                        <div class="publish_date"><span>Published :</span>[[${order.created_date}]] , </div>
+                        <div class="publish_time">[[${order.created_time}]]</div>
+                    </div>
+                </div>
+                <div class="description">[[${order.description}]]</div>
+                <div class="knowledgeBlock" id="knowledgeBlock">
+                    <th:block th:each="knowledge: ${#strings.listSplit(order.knowledge, ',')}">
+                        <div class="knowledge">[[${knowledge}]]</div>
+                    </th:block>
+                </div>
+            </div>
+            <div class="otherInfo">
+                <div class="deadline"><span>Deadline date :</span> [[${order.deadline}]]</div>
+                <div class="deadline"><span>Deadline time :</span> [[${order.dead_time}]]</div>
+                <div class="deadline"><span>Payment :</span> [[${order.payment}]] kzt</div>
+            </div>
+            <div th:class="${cartHash.get(order.id)} ? 'activeLikeButton' : 'LikeButtonBlock' " th:with="attrId='LikeButton'+${order.id}" th:id="${attrId}"
+                 th:onclick="SaveOrder([[${order.id
+                 }]], [[${user_id}]], [[${attrId}]])" th:text="${cartHash.get(order.id)} ? 'Delete' : 'Save'">Save</div>
+
+        </div>
+        </a>
+    </th:block>
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../static/css/appStyle.css" th:href="@{/css/appStyle.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/Profile.css" th:href="@{/css/Profile.css}" type="text/css">
+</head>
+<body>
+<div class="anotherContainer">
+    <nav th:include="/fragments/navbar :: navBar">
+    </nav>
+    <main style="position: relative">
+        <div class="TopTitle">Profile</div>
+        <div class="profileContainer">
+            <div class="InfoSection">
+            <div class="Left">
+                <div class="ImageBlock">
+                    <img th:src="@{${'/img/'+user.image}}" src="../static/img/UserDefaultImage.jpg" alt="UserDefaultImage" class="userImage"  onclick="showImageInput()">
+                </div>
+            </div>
+            <div class="Right">
+                <div class="InfoBlock">
+                    <div class="Username">@[[${user.username}]]</div>
+                    <div class="Fullname">[[${user.firstname}]] [[${user.lastname}]]</div>
+                    <div class="info"><span>Email:</span> <span>[[${user.email}]]</span></div>
+                    <div class="info"><span>Date of registration:</span> <span>[[${user.created_date}]] [[${user.created_time}]]</span></div>
+                    <div class="info"><span>Telegram:</span> <span>[[@{user.telegram}]]</span></div>
+                </div>
+            </div>
+
+            </div>
+
+            <div class="ButtonSection">
+                <button class="SetButton" onclick="ShowUpdateUserForm()">Set Profile</button>
+            </div>
+
+            <div class="PublishSection">
+                <div class="PublishTitle">Publishes</div>
+                <div class="PublishBlock">
+                    <div class="OrderContainer" th:include="/fragments/order :: Order(listOrders = ${listOrders}, user_id = ${user.getId()}, cartHash=${cartHash})" style="width:100%; margin: 2vh 0 2vh 0">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ImageInputBlock" style="display: none">
+            <form action="/profile/changeImage" method="post" enctype="multipart/form-data">
+                <input type="file" name="image" class="ImageInput" accept="image/*" value="Select Image">
+                <div class="ImageBtnBlock">
+                    <div></div>
+                    <div><button type="button" onclick="hideImageInput()" class="ImageBtn" id="CancelBtn1">Cancel</button></div>
+                    <div><button type="submit" class="ImageBtn" id="SubmitBtn1">Change</button></div>
+                </div>
+            </form>
+        </div>
+
+        <div id="UpdateUserForm" style="display: none">
+            <form action="/profile/update" method="post">
+                <label for="fname">Firstname: </label>
+                <input type="text" id="fname" name="firstname" class="updateInput" placeholder="Firstname" th:value="${user.firstname}">
+                <label for="lname">Lastname: </label>
+                <input type="text" id="lname" name="lastname" class="updateInput" placeholder="Lastname" th:value="${user.lastname}">
+                <label for="uname">Lastname: </label>
+                <input type="text" id="uname" name="username" class="updateInput" placeholder="Username" th:value="${user.username}">
+                <label for="tname">Telegram username: </label>
+                <input type="text" id="tname" name="telegram" class="updateInput" placeholder="Telegram username" th:value="${user.telegram}">
+                <div class="ImageBtnBlock">
+                    <div></div>
+                    <div><button type="button" onclick="HideUpdateUserForm()" class="ImageBtn" id="CancelBtn2">Cancel</button></div>
+                    <div><button type="submit" class="ImageBtn" id="SubmitBtn2">Update</button></div>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script>
+    function SaveOrder(order_id,user_id,attrId) {
+        let request_obj = {
+            order_id : order_id,
+            user_id : user_id
+        };
+
+        let classList = document.getElementById(attrId).classList;
+        let check = classList.contains('LikeButtonBlock');
+        if(check){
+            classList.remove('LikeButtonBlock');
+            classList.add('activeLikeButton');
+            document.getElementById(attrId).innerText = 'Delete';
+            $.ajax({
+                type: "POST",
+                url: "/cart/save",
+                data: JSON.stringify(request_obj),
+                contentType: "application/json",
+                success: function () {
+                    alert("Success");
+                }
+            });
+        }else{
+            classList.remove('activeLikeButton');
+            classList.add('LikeButtonBlock');
+            document.getElementById(attrId).innerText = 'Delete';
+
+            $.ajax({
+                type: "POST",
+                url: "/cart/delete",
+                data: JSON.stringify(request_obj),
+                contentType: "application/json",
+                success: function () {
+                    alert("Success");
+                }
+            });
+        }
+
+    }
+    function showImageInput(){
+        document.getElementById('ImageInputBlock').style.display = 'block';
+    }
+    function hideImageInput(){
+        document.getElementById('ImageInputBlock').style.display = 'none';
+    }
+    function ShowUpdateUserForm(){
+        document.getElementById('UpdateUserForm').style.display = 'block';
+    }
+    function HideUpdateUserForm(){
+        document.getElementById('UpdateUserForm').style.display = 'none';
+    }
+</script>
+</body>
+</html>

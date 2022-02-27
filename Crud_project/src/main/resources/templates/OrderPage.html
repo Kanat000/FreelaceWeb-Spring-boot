@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order page</title>
+    <link rel="stylesheet" href="../static/css/appStyle.css" th:href="@{/css/appStyle.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/OrderPage.css" th:href="@{/css/OrderPage.css}" type="text/css">
+</head>
+<body>
+
+    <div class="anotherContainer">
+        <nav th:include="/fragments/navbar :: navBar">
+        </nav>
+        <main>
+            <div class="Product">
+                <div class="OrderInfo">
+                    <div class="Name">[[${order.title}]]</div>
+                    <div class="Description">
+                        <span>Order: </span>
+                        <span>[[${order.description}]]</span>
+                    </div>
+                </div>
+                <div class=OtherInfo>
+                    <div>More Info: </div>
+                    <div>
+                        <span>Price: </span>
+                        <span>[[${order.payment}]] kzt</span>
+                    </div>
+                    <div>
+                        <span>Deadline: </span>
+                        <span>[[${order.deadline}]]</span>
+                    </div>
+                    <div>
+                        <span>Deadline time: </span>
+                        <span>[[${order.dead_time}]]</span>
+                    </div>
+                    <div>
+                        <span>Payment type: </span>
+                        <span>[[${order.payment_type}]]</span>
+                    </div>
+                    <div>
+                        <span>Created date:</span>
+                        <span>[[${order.created_date}]]</span>
+                    </div>
+                    <div>
+                        <span>Created time:</span>
+                        <span>[[${order.created_time}]]</span>
+                    </div>
+                    <div>
+                        <span>Publisher:</span>
+                        <span class="Publisher">
+                            @[[${order.user.username}]]
+                        </span>
+                    </div>
+                </div>
+                <div class="BtnBlock">
+                    <div class="CartBtnBlock" th:style="${order.user.id == user.id} ? 'display:block' : 'display:none'">
+                        <div>
+                            <a th:href="@{${'/order/delete?order_id='+order.id}}"><button type="submit" class="OrderDeleteBtn">Delete</button></a>
+                        </div>
+                        <div>
+                            <button type="button" class="OrderUpdateBtn" onclick="ShowOrderUpdateForm()">Update</button>
+                        </div>
+                        </div>
+                    <div class="ChatBtnBlock">
+                        <a th:href="@{${'https://t.me/'+order.user.telegram}}" target="_blank"><button class="ChatBtn">To chat</button></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+.SearchSection{
+    width: 100%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.SearchBlock{
+    width: 70%;
+    margin: auto;
+}
+.SearchBlock form{
+    width:100%;
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+}
+.Search{
+    width: 100%;
+    border:0.1vh solid gray;
+    border-radius: 1vh 0 0 1vh;
+    padding: 2vh;
+    font-size: 1.1vw;
+}
+.SearchBtn{
+    width: 100%;
+    background-color: #30618c;
+    color: #f3f3f3;
+    border:0.1vh solid #30618c;
+    padding: 2vh;
+    font-size: 1.1vw;
+    border-radius:0 1vh 1vh 0;
+}
+.Search:focus, .SearchBtn:active{
+    outline: none;
+}

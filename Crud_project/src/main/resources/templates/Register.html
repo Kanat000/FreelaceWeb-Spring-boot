@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Registration</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <style>
+        #success_message{ display: none;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <form class="well form-horizontal" th:action="@{/api/v1/reg}" method="post"  id="contact_form" th:object="${user}">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend><center><h2><b>Registration Form</b></h2></center></legend><br>
+
+            <!-- Text input-->
+            <input type="text" th:field="*{id}" style="display: none">
+            <div class="form-group">
+                <label class="col-md-4 control-label">First Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  th:field="*{firstname}" placeholder="First Name" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Last Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{lastname}" placeholder="Last Name" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Username</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  th:field="*{username}" placeholder="Username" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input th:field="*{email}" placeholder="E-Mail Address" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Password</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{password}" name="user_password" placeholder="Password" class="form-control"  type="password">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Telegram account.</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input th:field="*{telegram}" placeholder="(lobster)" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <input type="date" th:field="*{created_date}" id="created_date" style="display: none">
+            <input type="time" th:field="*{created_time}" id="created_time" style="display: none">
+            <input type="text" th:field="*{userRole}" style="display: none" value="USER">
+
+
+            <!-- Select Basic -->
+
+            <!-- Success message -->
+            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4"><br><button type="submit" class="btn btn-warning" >SUBMIT<span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+</div><!-- /.container -->
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    $(document).ready(function () {
+        $("#contact_form")
+            .bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: "glyphicon glyphicon-ok",
+                    invalid: "glyphicon glyphicon-remove",
+                    validating: "glyphicon glyphicon-refresh"
+                },
+                fields: {
+                    first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: "Please enter your First Name"
+                            }
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: "Please enter your Last Name"
+                            }
+                        }
+                    },
+                    user_name: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            notEmpty: {
+                                message: "Please enter your Username"
+                            }
+                        }
+                    },
+                    user_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            notEmpty: {
+                                message: "Please enter your Password"
+                            }
+                        }
+                    },
+                    confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            notEmpty: {
+                                message: "Please confirm your Password"
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: "Please enter your Email Address"
+                            },
+                            emailAddress: {
+                                message: "Please enter a valid Email Address"
+                            }
+                        }
+                    },
+                    contact_no: {
+                        validators: {
+                            stringLength: {
+                                min: 12,
+                                max: 12,
+                                notEmpty: {
+                                    message: "Please enter your Contact No."
+                                }
+                            }
+                        },
+                        department: {
+                            validators: {
+                                notEmpty: {
+                                    message: "Please select your Department/Office"
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+            .on("success.form.bv", function (e) {
+                $("#success_message").slideDown({ opacity: "show" }, "slow"); // Do something ...
+                $("#contact_form").data("bootstrapValidator").resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data("bootstrapValidator");
+
+                // Use Ajax to submit form data
+                $.post(
+                    $form.attr("action"),
+                    $form.serialize(),
+                    function (result) {
+                        console.log(result);
+                    },
+                    "json"
+                );
+            });
+    });
+
+</script>
+
+
+<script>
+    function SetDateTimeInput(){
+
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        var hh = today.getHours();
+        var min = today.getMinutes();
+        if(dd<10){
+            dd = '0' + dd;
+        }
+        if(mm<10){
+            mm = '0' + mm;
+        }
+        if(hh<10){
+            hh = '0' + hh;
+        }
+        if(min<10){
+            min = '0' + min;
+        }
+        var current_day = yyyy + '-' + mm + '-' + dd;
+        var current_time = hh + ":" + min;
+        console.log(current_day);
+        console.log(current_time);
+
+        document.getElementById('created_date').value = current_day;
+        document.getElementById('created_time').value = current_time;
+    }
+
+    window.onload = function (){
+        SetDateTimeInput();
+    }
+</script>
+
+</body>
+</html>

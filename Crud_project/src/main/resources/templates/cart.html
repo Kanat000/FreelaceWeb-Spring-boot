@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../static/css/appStyle.css" th:href="@{/css/appStyle.css}" type="text/css">
+
+</head>
+<body>
+
+<div class="container">
+    <nav th:include="/fragments/navbar :: navBar">
+    </nav>
+    <main>
+        <div class="TopTitle">Cart</div>
+        <div class="OrderContainer" th:include="/fragments/order :: Order(listOrders = ${listOrders}, user_id = ${user_id}, cartHash=${cartHash})">
+        </div>
+    </main>
+    <aside></aside>
+</div>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script>
+    function SaveOrder(order_id,user_id,attrId) {
+        let request_obj = {
+            order_id : order_id,
+            user_id : user_id
+        };
+
+        let classList = document.getElementById(attrId).classList;
+        let check = classList.contains('LikeButtonBlock');
+        if(check){
+            classList.remove('LikeButtonBlock');
+            classList.add('activeLikeButton');
+            document.getElementById(attrId).innerText = 'Delete';
+            $.ajax({
+                type: "POST",
+                url: "/cart/save",
+                data: JSON.stringify(request_obj),
+                contentType: "application/json",
+                success: function () {
+                    alert("Success");
+                }
+            });
+        }else{
+            classList.remove('activeLikeButton');
+            classList.add('LikeButtonBlock');
+            document.getElementById(attrId).innerText = 'Delete';
+
+            $.ajax({
+                type: "POST",
+                url: "/cart/delete",
+                data: JSON.stringify(request_obj),
+                contentType: "application/json",
+                success: function () {
+                    alert("Success");
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

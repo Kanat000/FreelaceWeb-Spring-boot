@@ -1,0 +1,166 @@
+
+.profileContainer{
+    width: 80%;
+    margin: auto;
+
+    margin-top: 5vh;
+}
+.InfoSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    background-color: #f3f3f3;
+    padding: 5vh;
+    padding-bottom: 10vh;
+    border-radius: 1vh 1vh 0 0;
+    backdrop-filter: blur(1);
+}
+.ImageBlock{
+    width: 12vw;
+    height:12vw;
+    background-color: gray;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+}
+.userImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.Username{
+    font-size: 1.7vw;
+    font-weight: bolder;
+    font-family: monospace;
+}
+.Fullname{
+    font-size: 1.6vw;
+    font-weight: lighter;
+    font-family: monospace;
+    margin-top: 2vh;
+}
+.info{
+    font-size: 1.3vw;
+    font-family: Calibri, serif;
+
+    margin-top: 1vh;
+}
+.info span:first-child{
+    font-weight: bolder;
+    color: #666666;
+}
+.info span:last-child{
+    font-weight: normal;
+    color: #666666;
+}
+.ButtonSection{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.SetButton{
+    width: 100%;
+    background-color: #30848c;
+    color: white;
+    border: 0;
+    padding: 1.5vh;
+    font-size: 1.3vw;
+    border-radius: 0 0 1vh 1vh;
+    opacity: 0.8;
+}
+.SetButton:hover{
+    opacity: 1;
+}
+.PublishSection{
+    width: 100%;
+    margin-top: 10vh;
+    background-color: #f3f3f3;
+    border-radius: 1vh;
+}
+.PublishTitle{
+    width: 95%;
+    margin: auto;
+    height: 7vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: #30848c;
+    font-size: 1.3vw;
+    font-family: monospace;
+    border-bottom: 1px solid #30848c;
+}
+.PublishBlock{
+    width: 95%;
+    margin: auto;
+    min-height: 20vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+#ImageInputBlock , #UpdateUserForm{
+    position: absolute;
+    background-color: rgba(208, 208, 208, 0.5);
+    backdrop-filter: blur(0.7);
+    border-radius: 2vh;
+}
+#ImageInputBlock{
+    width: 40%;
+    height: 30%;
+    top: 35%;
+    left: 30%;
+}
+#UpdateUserForm{
+    width: 40%;
+    height: 50%;
+    top: 25%;
+    left: 30%;
+}
+.ImageInput{
+    margin-top: 10vh;
+}
+.ImageBtnBlock{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top:5vh;
+}
+.ImageBtn{
+    width: 80%;
+    margin: auto;
+    padding: 1.5vh;
+    font-size: 1.4vw;
+    font-family: monospace;
+}
+#UpdateUserForm form{
+    width: 80%;
+    margin: auto;
+    padding: 5vh;
+}
+#UpdateUserForm form label{
+    font-size: 1.3vw;
+    font-family: monospace;
+    font-weight: bolder;
+    margin-top: 1vh;
+}
+#UpdateUserForm form label{
+    font-size: 1.3vw;
+    font-family: monospace;
+    font-weight: bolder;
+    margin-top: 0.5vh;
+    width: 100%;
+    padding: 1.5vh;
+    border: 0.1vh solid gray;
+    border-radius: 1vh;
+}
+#CancelBtn1,#CancelBtn2{
+    background-color: transparent;
+    border: 0.1vh solid gray;
+    box-sizing: border-box;
+}
+#SubmitBtn1,#SubmitBtn2{
+    background-color: #30848c;
+    color: #f3f3f3;
+    border: 0;
+}

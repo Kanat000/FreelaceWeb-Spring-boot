@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order list</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Order</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+
+
+<div class="container-fluid text-center">
+
+    <div><h2>Manage sneaker</h2></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/order/new}">Add new sneaker</a>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>sneaker name</th>
+                <th>sneaker description</th>
+                <th>sneaker cost</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            <tbody>
+            <th:block th:each="order : ${listOrders} ">
+                <tr>
+                    <td> [[${order.order_id}]]</td>
+                    <td> [[${order.title}]]</td>
+                    <td> [[${order.description}]]</td>
+                    <td> [[${order.payment}]]</td>
+                    <td> <a class="h4 mr-3" th:href="@{'/order/update/' + ${order.order_id}}" >Update</a></td>
+                    <td> <a class="h4" th:href="@{'/order/delete/' + ${order.order_id}}">Delete</a></td>
+                </tr>
+            </th:block>
+            </tbody>
+            </thead>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+</body>
+</html>

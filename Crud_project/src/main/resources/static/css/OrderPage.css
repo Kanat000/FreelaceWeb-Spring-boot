@@ -1,0 +1,109 @@
+main{
+    width: 100%;
+    height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.Product{
+    width: 90%;
+    background-color: white;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    padding: 4vh;
+    border:0.3vh solid blueviolet;
+    border-radius: 1vh;
+    margin-top: 3vh;
+}
+.Name{
+    font-size:2.7vh;
+    font-weight: bolder;
+}
+.Description{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+.Description span:first-child{
+    font-size: 2.6vh;
+    font-weight: bolder;
+}
+.Description span:last-child{
+    font-size: 2.3vh;
+    margin-top: 1vh;
+    width: 95%;
+    min-height: 10vh;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.Description span:last-child::-webkit-scrollbar{
+    width: 0.5vw;
+}
+.Description span:last-child::-webkit-scrollbar-thumb{
+    background-color: gray;
+}
+.Description span:last-child::-webkit-scrollbar-track{
+    background-color: lightgrey;
+}
+.OtherInfo{
+    min-height: 50vh;
+    max-height: 70vh;
+    display: grid;
+    border:0.1vh solid lightgray;
+}
+.OtherInfo div:first-child{
+    font-size: 2.5vh;
+    font-weight: bolder;
+}
+.OtherInfo div{
+    border-bottom: 0.1vh solid lightgray;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 1vw 0 1vw;
+}
+.OtherInfo div span:first-child{
+    color: gray;
+    font-size: 2.2vh;
+    font-weight: bolder;
+}
+
+.BtnBlock{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    margin-top: 4vh;
+    grid-column-gap: 1vw;
+}
+.CartBtnBlock{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: flex-end;
+}
+.Publisher{
+    color: blueviolet;
+    font-weight: bolder;
+}
+.OrderUpdateBtn{
+    width: 15vw;
+    background-color: mediumseagreen;
+    padding: 1vh;
+    border:0.1vh solid darkseagreen;
+}
+.OrderDeleteBtn{
+    width: 15vw;
+    background-color: red;
+    padding: 1vh;
+    border:0.1vh solid indianred;
+}
+
+
+
+.ChatBtn{
+    width: 90%;
+    background-color: cadetblue;
+    padding: 1vh;
+    border: 0.1vh solid cadetblue;
+    color: rgba(255, 255, 255, 0.8);
+}

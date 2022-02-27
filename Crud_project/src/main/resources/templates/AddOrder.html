@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Order</title>
+    <link rel="stylesheet" href="../static/css/appStyle.css" th:href="@{/css/appStyle.css}" type="text/css">
+    <link rel="stylesheet" href="../static/css/AddStyle.css" th:href="@{/css/AddStyle.css}" type="text/css">
+
+</head>
+<body>
+    <div class="anotherContainer">
+        <nav th:include="/fragments/navbar :: navBar">
+        </nav>
+        <main>
+            <div class="TopTitle">Add Order</div>
+            <div class="AddBlock">
+                <form th:action="@{/order/save}"  method="post" th:object="${order}">
+                    <input type="hidden" th:field="*{id}" style="display: none">
+                    <div class="LeftPart">
+                    <div class="LabelBlock"><label for="title">Write a title for the order:</label></div>
+                    <div class="InputBlock"><input type="text" id="title" th:field="*{title}" class="Input" placeholder="Title" ></div>
+
+                    <div class="LabelBlock"><label for="description">Write a description for the order:</label></div>
+                    <div class="InputBlock"><textarea id="description" th:field="*{description}" class="textarea" placeholder="Description"></textarea></div>
+
+                    <div class="LabelBlock"><label for="dead_date">Choose deadline date for the order:</label></div>
+                    <div class="InputBlock"><input type="date" id="dead_date" th:field="*{deadline}" class="Input"></div>
+
+                    <div class="LabelBlock"><label for="dead_time">Choose deadline date for the order:</label></div>
+                    <div class="InputBlock"><input type="time" id="dead_time" th:field="*{dead_time}" class="Input"></div>
+                    </div>
+                    <div class="RightPart">
+                    <div class="LabelBlock"><label for="knowledge">Select knowledge that need for the order:</label></div>
+                    <div class="KnowledgeInput">
+                        <input type="text" id="knowledge" placeholder="Knowledge">
+                        <button onclick="AddKnowledge()" type="button">Add</button>
+                    </div>
+                    <div id="knowledgeResultOutput"></div>
+                    <input type="text" id="knowledgeResultInput" th:field="*{knowledge}" style="display: none" value="">
+
+                    <div class="LabelBlock"><label for="payment">Write a payment price for the order:</label></div>
+                    <div class="InputBlock"><input type="text" id="payment" th:field="*{payment}" class="Input" placeholder="Payment (kzt)"></div>
+
+                    <div class="LabelBlock"><label for="paymentType">Write a payment price for the order:</label></div>
+                    <div class="InputBlock">
+                        <select id="paymentType" th:field="*{payment_type}" class="Input">
+                            <option selected="selected" value="Kaspi">Kaspi</option>
+                            <option value="Halyk">Halyk</option>
+                            <option value="Jusan">Jusan</option>
+                            <option value="Real">Real money</option>
+                        </select>
+                    </div>
+                    <input type="date" th:field="*{created_date}" id="published_date" style="display: none" >
+                    <input type="time" th:field="*{created_time}" id="published_time" style="display: none" >
+
+                    <div class="submitBlock"><input type="submit" class="addSubmit" value="Publish"></div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+    </div>
+    <script type="text/javascript">
+
+
+        let knowledge = document.getElementById('knowledge');
+        let knowledgeResultOutput = document.getElementById('knowledgeResultOutput');
+        let knowledgeResultInput = document.getElementById('knowledgeResultInput');
+        let knowledgeArr = [];
+        function AddKnowledge(){
+            knowledgeArr.push(knowledge.value);
+            knowledgeResultOutput.innerText = knowledgeArr;
+            knowledgeResultInput.value = knowledgeArr;
+            knowledge.value = '';
+
+        }
+        function SetDateTimeInput(){
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1;
+            var yyyy = today.getFullYear();
+            var hh = today.getHours();
+            var min = today.getMinutes();
+            if(dd<10){
+                dd = '0' + dd;
+            }
+            if(mm<10){
+                mm = '0' + mm;
+            }
+            if(hh<10){
+                hh = '0' + hh;
+            }
+            if(min<10){
+                min = '0' + min;
+            }
+            var current_day = yyyy + '-' + mm + '-' + dd;
+            var current_time = hh + ":" + min;
+            console.log(current_day);
+            console.log(current_time);
+
+            document.getElementById('published_date').value = current_day;
+            document.getElementById('published_time').value = current_time;
+        }
+
+        window.onload = function (){
+            SetDateTimeInput();
+        }
+    </script>
+</body>
+</html>

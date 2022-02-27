@@ -1,0 +1,89 @@
+.AddBlock{
+    width:80%;
+    margin: auto;
+    margin-top:5vh;
+    height: 80vh;
+}
+.AddBlock form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.LabelBlock{
+    width: 100%;
+    text-align: left;
+    margin-top: 3vh;
+}
+label{
+    font-size: 1.4vw;
+    color: #161616;
+    font-weight: bolder;
+}
+.InputBlock{
+    width: 100%;
+    padding: 1vh;
+}
+.Input{
+    width: 80%;
+    margin: auto;
+    padding:1.5vh;
+    border-radius: 2vh;
+    font-size: 1vw;
+    border: 0.1vh solid darkgray;
+}
+.textarea{
+    resize: none;
+    width: 84%;
+    margin: auto;
+    height: 20vh;
+    font-size: 1.1vw;
+    border-radius: 2vh;
+}
+.KnowledgeInput{
+    width: 80%;
+    display: grid;
+    padding: 2vh;
+    grid-template-columns: 4fr 1fr;
+    justify-content: center;
+}
+#knowledge{
+    font-size: 1.1vw;
+    padding: 1.5vh;
+    border:0.1vh solid darkgray;
+}
+.KnowledgeInput button{
+    background-color: forestgreen;
+    color: white;
+    border:0;
+}
+#knowledgeResultOutput{
+    width: 80%;
+    height: 10vh;
+    margin-left: 1.5vh;
+    border-radius: 2vh;
+    border: 0.1vh dashed gray;
+}
+.submitBlock{
+    width: 100%;
+}
+input:active{
+    outline: none;
+}
+input:focus{
+    outline: none;
+    border:0.1vh solid darkslateblue;
+}
+textarea:focus{
+    outline: none;
+    border:0.1vh solid darkslateblue;
+}
+.addSubmit{
+    width: 90%;
+    margin: auto;
+    padding: 1.5vh;
+    margin-top: 5vh;
+    font-size: 1.2vw;
+    background-color: darkslateblue;
+    color: white;
+    border:0;
+    border-radius: 10vh;
+}

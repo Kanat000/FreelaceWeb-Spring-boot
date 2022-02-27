@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div class="navBar" th:fragment="navBar">
+        <div class="Menu">
+            <a href="/profile"><div class="MenuList">Profile</div></a>
+            <a href="/addOrder"><div class="activeMenuList">Add Order</div></a>
+            <a href="/"><div class="MenuList">Freelance</div></a>
+            <a href="#"><div class="MenuList">Users</div></a>
+            <a href="/cart/"><div class="MenuList">Cart</div></a>
+        </div>
+    </div>
+</body>
+</html>

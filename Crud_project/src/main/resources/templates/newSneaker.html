@@ -1,0 +1,68 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>[[${pageTitle}]]</title>-->
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container-fluid">-->
+<!--    <div> <h2 class="text-center">[[${pageTitle}]]</h2> </div>-->
+
+
+<!--    <form th:action="@{/order/save}" method="post" th:object="${order}" style="max-width: 500px; margin: 0 auto">-->
+<!--        <input type="hidden" th:field="*{order_id}">-->
+
+
+
+<!--        <div class="border border-secondary rounded p-3">-->
+
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-4 col-form-label">order name</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="text" th:field="*{title}" class="form-control" required minlength="1" maxlength="30">-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-4 col-form-label">order description</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="text" th:field="*{description}" class="form-control" required minlength="1" maxlength="100">-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-4 col-form-label">order payment</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="text" th:field="*{payment}" class="form-control" required minlength="2" maxlength="15">-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+<!--            <div class="text-center">-->
+<!--                <button type="submit" class="btn btn-primary m-2"> Save</button>-->
+<!--                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()"> Cancel</button>-->
+
+<!--            </div>-->
+
+
+
+<!--        </div>-->
+
+
+
+<!--    </form>-->
+
+<!--</div>-->
+
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--    function cancelForm(){-->
+<!--        window.location = "[[@{/order}]]"-->
+<!--    }-->
+<!--</script>-->
+
+
+<!--</body>-->
+<!--</html>-->

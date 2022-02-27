@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm page</title>
+</head>
+<body>
+    <h1>
+        Click here for confirm your account <a th:href="@{${'/api/v1/reg/confirm?token='+token}}"> CONFIRM</a>
+    </h1>
+</body>
+</html>
